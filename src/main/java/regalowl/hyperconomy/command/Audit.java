@@ -91,8 +91,8 @@ public class Audit extends BaseCommand implements HyperCommand {
 		QueryResult result = sr.select(query);
 		double amount = 0.0;
 		if (result.next()) {
-			amount = result.getDouble("total");
-		}
+            amount = result.getDouble("total") == null ? 0 : result.getDouble("total");
+        }
 		result.close();
 		return amount;
 	}
